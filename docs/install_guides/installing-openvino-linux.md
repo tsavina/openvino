@@ -6,6 +6,8 @@
 > - CentOS and Yocto installations will require some modifications that are not covered in this guide.
 > - An internet connection is required to follow the steps in this guide.
 > - [Intel® System Studio](https://software.intel.com/en-us/system-studio) is an all-in-one, cross-platform tool suite, purpose-built to simplify system bring-up and improve system and IoT device application performance on Intel® platforms. If you are using the Intel® Distribution of OpenVINO™ with Intel® System Studio, go to [Get Started with Intel® System Studio](https://software.intel.com/en-us/articles/get-started-with-openvino-and-intel-system-studio-2019).
+> - You can also [quick start using OpenVINO™ toolkit](@ref openvino_docs_get_started_get_started_dl_workbench)  in your browser with [Deep Learning Workbench](@ref workbench_docs_Workbench_DG_Introduction). DL Workbench is an official OpenVINO™ UI that enables you to import a model, analyze its performance and accuracy, visualize the outputs, optimize and prepare the model for deployment on various Intel® platforms. Proceed to a simple [installation form](@ref workbench_docs_Workbench_DG_Install) to get started and learn about OpenVINO™ toolkit components.
+
 
 ## Introduction
 
@@ -35,14 +37,6 @@ The Intel® Distribution of OpenVINO™ toolkit for Linux\*:
 
 [Deep Learning Workbench](@ref workbench_docs_Workbench_DG_Introduction) (DL Workbench) is a platform built upon OpenVINO™ and provides a web-based graphical environment that enables you to optimize, fine-tune, analyze, visualize, and compare performance of deep learning models on various Intel® architecture
 configurations. In the DL Workbench, you can use most of OpenVINO™ toolkit components:
-* [Model Downloader](@ref omz_tools_downloader)
-* [Intel® Open Model Zoo](@ref omz_models_group_intel)
-* [Model Optimizer](../MO_DG/Deep_Learning_Model_Optimizer_DevGuide.md)
-* [Post-training Optimization Tool](@ref pot_README)
-* [Accuracy Checker](@ref omz_tools_accuracy_checker)
-* [Benchmark Tool](../../inference-engine/samples/benchmark_app/README.md)
-
-Proceed to an [easy installation from Docker](@ref workbench_docs_Workbench_DG_Install_from_Docker_Hub) to get started.
 
 ## System Requirements
 
