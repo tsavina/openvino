@@ -6,7 +6,13 @@
 > - CentOS and Yocto installations will require some modifications that are not covered in this guide.
 > - An internet connection is required to follow the steps in this guide.
 > - [Intel® System Studio](https://software.intel.com/en-us/system-studio) is an all-in-one, cross-platform tool suite, purpose-built to simplify system bring-up and improve system and IoT device application performance on Intel® platforms. If you are using the Intel® Distribution of OpenVINO™ with Intel® System Studio, go to [Get Started with Intel® System Studio](https://software.intel.com/en-us/articles/get-started-with-openvino-and-intel-system-studio-2019).
-> - You can also [quick start using OpenVINO™ toolkit](@ref openvino_docs_get_started_get_started_dl_workbench)  in your browser with [Deep Learning Workbench](@ref workbench_docs_Workbench_DG_Introduction). DL Workbench is an official OpenVINO™ UI that enables you to import a model, analyze its performance and accuracy, visualize the outputs, optimize and prepare the model for deployment on various Intel® platforms. Proceed to a simple [installation form](@ref workbench_docs_Workbench_DG_Install) to get started and learn about OpenVINO™ toolkit components.
+
+> **TIP**: If you want to [quick start with OpenVINO™ toolkit](@ref 
+> openvino_docs_get_started_get_started_dl_workbench),  you can use [Deep Learning Workbench](@ref
+> workbench_docs_Workbench_DG_Introduction). DL Workbench is an official OpenVINO™ UI that enables you to import a
+> model, analyze its performance and accuracy, visualize the outputs, optimize and prepare the model for deployment
+> on various Intel® platforms in your browser. Proceed to [get started](@ref
+> workbench_docs_Workbench_DG_Install).
 
 
 ## Introduction
@@ -33,10 +39,6 @@ The Intel® Distribution of OpenVINO™ toolkit for Linux\*:
 | [Documentation for Pre-Trained Models ](@ref omz_models_group_intel)                                   | Documentation for the pre-trained models available in the [Open Model Zoo repo](https://github.com/opencv/open_model_zoo).  |
 | Deep Learning Streamer (DL Streamer)   | Streaming analytics framework, based on GStreamer, for constructing graphs of media analytics components. For the DL Streamer documentation, see [DL Streamer Samples](@ref gst_samples_README), [API Reference](https://openvinotoolkit.github.io/dlstreamer_gst/), [Elements](https://github.com/opencv/gst-video-analytics/wiki/Elements), [Tutorial](https://github.com/opencv/gst-video-analytics/wiki/DL%20Streamer%20Tutorial). |
 
-**Could Be Optionally Installed**
-
-[Deep Learning Workbench](@ref workbench_docs_Workbench_DG_Introduction) (DL Workbench) is a platform built upon OpenVINO™ and provides a web-based graphical environment that enables you to optimize, fine-tune, analyze, visualize, and compare performance of deep learning models on various Intel® architecture
-configurations. In the DL Workbench, you can use most of OpenVINO™ toolkit components:
 
 ## System Requirements
 

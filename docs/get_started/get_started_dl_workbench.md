@@ -4,7 +4,8 @@ The OpenVINO™ toolkit  is a comprehensive toolkit for optimizing pretrained de
 
 Start working with the OpenVINO™ toolkit right from your browser: import a model, analyze its performance and accuracy, visualize the outputs, optimize and prepare the model for deployment in a matter of minutes. DL Workbench will take you through the full OpenVINO™ workflow, providing the opportunity to learn about various toolkit components.
 
-![](./dl_workbench_img/workbench_workflow.png)
+![](./dl_workbench_img/work_with_model_DL_WB1.png)
+![](./dl_workbench_img/Learn_OV_DL_WB1.png)
 
 ##  User Goals
 
@@ -15,20 +16,22 @@ Start working with the OpenVINO™ toolkit right from your browser: import a mod
 * Use preconfigured JupyterLab\* environment to learn OpenVINO API and CLI (command-line inteface), and its components essential to analyze and optimize models. 
 
 \htmlonly
-<div class="ovino-btn">
- <a style="color: white;" href="https://docs.openvinotoolkit.org/latest/workbench_docs_Workbench_DG_Install.html">Install DL Workbench</a>
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/on8xSSTKCt8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 \endhtmlonly
 
 ## Run DL Workbench 
 
 You can [run DL Workbench](@ref workbench_docs_Workbench_DG_Install) on your local system or in the Intel® DevCloud for the Edge. Ensure that you have met the [prerequisites](https://docs.openvinotoolkit.org/latest/workbench_docs_Workbench_DG_Prerequisites.html)
 
-Run DL Workbench on your local system by using simple installation form. Select your options and run the commands on the local machine:
+Run DL Workbench on your local system by using the installation form. Select your options and run the commands on the local machine:
 
 \htmlonly
 <iframe style="width: 100%; height: 620px;" src="https://openvinotoolkit.github.io/workbench_aux/"  frameborder="0" allow="clipboard-write;"></iframe>
 \endhtmlonly
+
+Wait for the DL Workbench to set up for about a minute. Once it is done, open the http://127.0.0.1:5665 link.
+
+![](./dl_workbench_img/active_projects_page.png)
 
 Watch the video to learn more detailed information on how to run DL Workbench:
 
@@ -36,16 +39,12 @@ Watch the video to learn more detailed information on how to run DL Workbench:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JBDG2g5hsoM"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 \endhtmlonly
 
-Wait for the DL Workbench to set up for about a minute. Once it is done, open the http://127.0.0.1:5665 link.
+Congratulations! You have installed DL Workbench. Your next step is to [Get Started with DL Workbench](https://docs.openvinotoolkit.org/latest/workbench_docs_Workbench_DG_Work_with_Models_and_Sample_Datasets.html) and create your first project. 
 
-![](./dl_workbench_img/active_projects_page.png)
-
-Congratulations! You have completed the instructions to run DL Workbench. Your next step is to [Get Started with DL Workbench](https://docs.openvinotoolkit.org/latest/workbench_docs_Workbench_DG_Work_with_Models_and_Sample_Datasets.html) and create your first project. 
-
-![](./dl_workbench_img/wb_workflow.gif)
+![](./dl_workbench_img/wb_workflow_1.gif)
 
 ## See Also
-
+* [Get Started with DL Workbench](https://docs.openvinotoolkit.org/latest/workbench_docs_Workbench_DG_Work_with_Models_and_Sample_Datasets.html)
 * [DL Workbench Overview](https://docs.openvinotoolkit.org/latest/workbench_docs_Workbench_DG_Introduction.html)
 * [DL Workbench Educational Resources](https://docs.openvinotoolkit.org/latest/workbench_docs_Workbench_DG_Additional_Resources.html)
 * [OpenVINO™ Toolkit Overview](../index.md)
