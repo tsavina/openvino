@@ -4,8 +4,15 @@ The OpenVINO™ toolkit  is a comprehensive toolkit for optimizing pretrained de
 
 Start working with the OpenVINO™ toolkit right from your browser: import a model, analyze its performance and accuracy, visualize the outputs, optimize and prepare the model for deployment in a matter of minutes. DL Workbench will take you through the full OpenVINO™ workflow, providing the opportunity to learn about various toolkit components.
 
-![](./dl_workbench_img/work_with_model_DL_WB1.png)
-![](./dl_workbench_img/Learn_OV_DL_WB1.png)
+<div class="image">
+<img src="./dl_workbench_img/work_with_model_DL_WB1.png"
+width="360" height="315"
+>
+<div class="image">
+<img src="./dl_workbench_img/Learn_OV_DL_WB1.png""
+width="380" height="315"
+>
+
 
 ##  User Goals
 
@@ -29,7 +36,7 @@ Run DL Workbench on your local system by using the installation form. Select you
 <iframe style="width: 100%; height: 620px;" src="https://openvinotoolkit.github.io/workbench_aux/"  frameborder="0" allow="clipboard-write;"></iframe>
 \endhtmlonly
 
-Wait for the DL Workbench to set up for about a minute. Once it is done, open the http://127.0.0.1:5665 link.
+Once DL Workbench is set up, open the http://127.0.0.1:5665 link.
 
 ![](./dl_workbench_img/active_projects_page.png)
 

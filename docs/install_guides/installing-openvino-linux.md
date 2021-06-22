@@ -8,11 +8,11 @@
 > - [Intel® System Studio](https://software.intel.com/en-us/system-studio) is an all-in-one, cross-platform tool suite, purpose-built to simplify system bring-up and improve system and IoT device application performance on Intel® platforms. If you are using the Intel® Distribution of OpenVINO™ with Intel® System Studio, go to [Get Started with Intel® System Studio](https://software.intel.com/en-us/articles/get-started-with-openvino-and-intel-system-studio-2019).
 
 > **TIP**: If you want to [quick start with OpenVINO™ toolkit](@ref 
-> openvino_docs_get_started_get_started_dl_workbench),  you can use [Deep Learning Workbench](@ref
-> workbench_docs_Workbench_DG_Introduction). DL Workbench is an official OpenVINO™ UI that enables you to import a
+> openvino_docs_get_started_get_started_dl_workbench), you can use 
+> [Deep Learning Workbench](@ref workbench_docs_Workbench_DG_Introduction). DL Workbench is an official OpenVINO™ UI 
+> that enables you to import a
 > model, analyze its performance and accuracy, visualize the outputs, optimize and prepare the model for deployment
-> on various Intel® platforms in your browser. Proceed to [get started](@ref
-> workbench_docs_Workbench_DG_Install).
+> on various Intel® platforms in your browser. Proceed to [get started](@ref workbench_docs_Workbench_DG_Install).
 
 
 ## Introduction
