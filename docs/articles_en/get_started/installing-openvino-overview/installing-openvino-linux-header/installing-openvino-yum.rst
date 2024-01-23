@@ -127,7 +127,6 @@ Install OpenVINO Runtime
 
       .. code-block:: sh
 
-
          sudo yum install openvino-2023.3.0
 
 
