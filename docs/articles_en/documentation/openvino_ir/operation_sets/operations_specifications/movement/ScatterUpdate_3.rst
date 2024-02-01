@@ -101,12 +101,12 @@ The value can be in the range ``[ -r, r - 1]``, where ``r`` is the rank of ``dat
 
     <layer ... type="ScatterUpdate">
         <input>
-            <port id="0">  < !-- data -->
-                <dim>3</dim>    < !-- {{-1.0f, 1.0f, -1.0f, 3.0f, 4.0f},  -->
-                <dim>5</dim>    < !-- {-1.0f, 6.0f, -1.0f, 8.0f, 9.0f},   -->
-            </port>             < !-- {-1.0f, 11.0f, 1.0f, 13.0f, 14.0f}} -->
-            <port id="1">  < !-- indices -->
-                <dim>2</dim> < !-- {0, 2} -->
+            <port id="0">  <!-- data -->
+                <dim>3</dim>    <!-- {{-1.0f, 1.0f, -1.0f, 3.0f, 4.0f},  -->
+                <dim>5</dim>    <!-- {-1.0f, 6.0f, -1.0f, 8.0f, 9.0f},   -->
+            </port>             <!-- {-1.0f, 11.0f, 1.0f, 13.0f, 14.0f}} -->
+            <port id="1">  <!-- indices -->
+                <dim>2</dim> <!-- {0, 2} -->
             </port>
             <port id="2">  < !-- updates -->
                 <dim>3</dim> < !-- {1.0f, 1.0f} -->
