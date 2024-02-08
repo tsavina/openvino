@@ -7,32 +7,69 @@ Weight Compression
 Enhancing Model Efficiency with Weight Compression
 ##################################################################
 
-Weight compression aims to reduce the memory footprint of a model. It can also lead to significant performance improvement for large memory-bound models, such as Large Language Models (LLMs). LLMs and other models, which require extensive memory to store the weights during inference, can benefit from weight compression in the following ways: 
+Weight compression is a technique for enhancing the efficiency of models,
+especially those with large memory requirements. This method reduces the model's
+memory footprint, a crucial factor for Large Language Models (LLMs).
 
-- enabling the inference of exceptionally large models that cannot be accommodated in the memory of the device; 
-- improving the inference performance of the models by reducing the latency of the memory access when computing the operations with weights, for example, Linear layers.
+Unlike full model quantization, where weights and activations are quantized,
+weight compression in `Neural Network Compression Framework (NNCF) <https://github.com/openvinotoolkit/nncf>`__
+only targets the model's weights. This approach
+allows the activations to remain as floating-point numbers, preserving most
+of the model's accuracy while improving its speed and reducing
+its size.
 
-Currently, `Neural Network Compression Framework (NNCF) <https://github.com/openvinotoolkit/nncf>`__ provides weight quantization to 8 and 4-bit integer data types as a compression method primarily designed to optimize LLMs. The main difference between weights compression and full model quantization is that activations remain floating-point in the case of weight compression, resulting in better accuracy. Weight compression for LLMs provides a solid inference performance improvement which is on par with the performance of the full model quantization. In addition, weight compression is data-free and does not require a calibration dataset, making it easy to use.
+The reduction in size is especially noticeable with larger models,
+for instance the 7 billion parameter Llama 2 model can be reduced
+from about 25GB to 4GB using 4-bit weight compression. With smaller models (i.e. less than 1B parameters),
+weight compression may result in more accuracy reduction than with larger models.
+
+LLMs and other models that require
+extensive memory to store the weights during inference can benefit
+from weight compression as it:
+
+* enables inference of exceptionally large models
+that cannot be accommodated in the device memory;
+* reduces storage and memory overhead, making models
+more lightweight and less resource intensive for deployment;
+* improves inference speed by reducing
+the latency of memory access when computing the
+operations with weights, for example, Linear layers.
+The weights are smaller and thus faster to load from memory;
+* unlike quantization, does not require
+sample data to calibrate the range of activation values.
+
+Currently, `NNCF <https://github.com/openvinotoolkit/nncf>`__
+provides weight quantization to 8 and 4-bit integer data types as a compression
+method primarily designed to optimize LLMs.
 
 Compress Model Weights
 ######################
 
-- **8-bit weight quantization** - this method is aimed at accurate optimization of the model, which usually leads to significant performance improvements for Transformer-based models. Models with 8-bit compressed weights are performant on the vast majority of supported CPU and GPU platforms.
+- **8-bit weight quantization** - this method offers a balance between model size reduction
+and maintaining accuracy, which usually leads to significant performance improvements for Transformer-based models.
+Models with 8-bit compressed weights are performant on the vast majority of supported CPU and GPU platforms.
 
-The code snippet below shows how to do 8-bit quantization of the model weights represented in OpenVINO IR using NNCF:
+The code snippet below shows how to do INT8 weight compression of the model
+weights represented on an OpenVINO IR using NNCF:
 
 .. tab-set::
 
    .. tab-item:: OpenVINO
       :sync: openvino
-      
+
       .. doxygensnippet:: docs/optimization_guide/nncf/code/weight_compression_openvino.py
          :language: python
          :fragment: [compression_8bit]
 
-Now, the model is ready for compilation and inference. It can be also saved into a compressed format, resulting in a smaller binary file.
+Now, the model is ready for compilation and inference.
+It can be also saved into a compressed format, resulting in a smaller binary file.
 
-- **4-bit weight quantization** - this method stands for an INT4-INT8 mixed-precision weight quantization, where INT4 is considered as the primary precision and INT8 is the backup one. It usually results in a smaller model size and lower inference latency, although the accuracy degradation could be higher, depending on the model. The method has several parameters that can provide different performance-accuracy trade-offs after optimization:
+- **4-bit weight quantization** - this method stands for an INT4-INT8
+mixed-precision weight quantization, where INT4 is considered as the
+primary precision and INT8 is the backup one. It usually results in a
+smaller model size and lower inference latency, although the accuracy
+degradation could be higher, depending on the model. The method has
+several parameters that can provide different performance-accuracy trade-offs after optimization:
 
   * ``mode`` - there are two modes to choose from: ``INT4_SYM`` - stands for INT4 symmetric weight quantization and results in faster inference and smaller model size, and ``INT4_ASYM`` - INT4 asymmetric weight quantization with variable zero-point for more accurate results.
 
@@ -61,7 +98,7 @@ The example below shows data-free 4-bit weight quantization applied on top of Op
 
    .. tab-item:: OpenVINO
       :sync: openvino
-      
+
       .. doxygensnippet:: docs/optimization_guide/nncf/code/weight_compression_openvino.py
          :language: python
          :fragment: [compression_4bit]
@@ -70,7 +107,7 @@ For data-aware weight compression refer to the following `example <https://githu
 
 .. note::
 
-   OpenVINO also supports 4-bit models from Hugging Face `Transformers <https://github.com/huggingface/transformers>`__ library optimized 
+   OpenVINO also supports 4-bit models from Hugging Face `Transformers <https://github.com/huggingface/transformers>`__ library optimized
    with `GPTQ <https://github.com/PanQiWei/AutoGPTQ>`__. In this case, there is no need for an additional model optimization step because model conversion will automatically preserve the INT4 optimization results, allowing model inference to benefit from it.
 
 
@@ -144,7 +181,7 @@ The table below shows examples of Text Generation models with different optimiza
      - INT4_SYM,group_size=64,ratio=0.8
      - 2.98
      - 8.0
-   
+
 
 Additional Resources
 ####################
