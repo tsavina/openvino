@@ -29,12 +29,15 @@ from weight compression as it:
 
 * enables inference of exceptionally large models
 that cannot be accommodated in the device memory;
+
 * reduces storage and memory overhead, making models
 more lightweight and less resource intensive for deployment;
+
 * improves inference speed by reducing
 the latency of memory access when computing the
 operations with weights, for example, Linear layers.
 The weights are smaller and thus faster to load from memory;
+
 * unlike quantization, does not require
 sample data to calibrate the range of activation values.
 
