@@ -25,20 +25,37 @@ enabling the development of multimodal applications, allowing for **write-once, 
 across ARM and x86/x64 architectures; features automated optimization to maximize
 performance on target hardware.
 
-Generative AI is an innovative technique that creates new data, such as text, images, video, or audio, using neural networks. OpenVINO accelerates Generative AI use cases as they mostly rely on model inference, allowing for faster development and better performance. When it comes to generative models, OpenVINO supports:
+**Quick Start Example**
 
-* Conversion, optimization and inference for text, image and audio generative models, for example, Llama 2, MPT, OPT, Stable Diffusion, Stable Diffusion XL, etc.
-* Int8 weight compression for text generation models.
-* Storage format reduction (fp16 precision for non-compressed models and int8 for compressed models).
-* Inference on CPU and GPU platforms, including integrated Intel® Processor Graphics, discrete Intel® Arc™ A-Series Graphics, and discrete Intel® Data Center GPU Flex Series.
+Here is a quick example of how to run a Llama2 model using OpenVINO optimizations for CPU. First, set up a Python virtual environment for OpenVINO by following the OpenVINO Installation Instructions.
+
+Once the environment is created and activated, install Optimum Intel, OpenVINO, NNCF and their dependencies in a Python environment by issuing:
+
+.. code-block:: python
+
+    pip install optimum[openvino,nncf]
+
+Run the code shown below to download an LLM from Hugging Face, convert it to OpenVINO IR format, and run text generation on an input prompt.
+
+.. code-block:: python
+
+    from optimum.intel import OVModelForCausalLM
+    from transformers import AutoTokenizer, pipeline
+
+    # load the model
+    model_id = "HuggingFaceH4/zephyr-7b-beta"
+    model = OVModelForCausalLM.from_pretrained(model_id, export=True)
+
+    # inference
+    tokenizer = AutoTokenizer.from_pretrained(model_id)
+    pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, max_length=50)
+    prompt = "The weather is"
+    results = pipe(prompt)
+
+Here is  the output from running the example. Try changing the prompt to see what other text outputs can be generated.
+
+.. code-block:: diff
+
+    The weather is finally starting to warm up, and that means it’s time to start thinking about summer activities.
 
 
-1. Choose framework
-
-
-Hugging Face vs Native OpenVINO
-
-This comparison outlines the key differences between integrating LLMs
-with OpenVINO through Hugging Face frameworks and directly using native
-OpenVINO APIs. The choice between these approaches depends on the desired
-balance between ease of use and customizability for LLM deployment.
