@@ -5,8 +5,7 @@ Optimize and Deploy Generative AI Models
 
 OpenVINO offers two main paths for Generative AI use cases:
 
-* **Hugging Face**: use OpenVINO as a backend for Hugging Face frameworks
-(transformers, diffusers) through the `Optimum Intel <https://huggingface.co/docs/optimum/intel/inference>`__ extension.
+* **Hugging Face**: use OpenVINO as a backend for Hugging Face frameworks (transformers, diffusers) through the `Optimum Intel <https://huggingface.co/docs/optimum/intel/inference>`__ extension.
 
 * **Native OpenVINO**: use OpenVINO native APIs (Python and C++) with custom pipeline code.
 

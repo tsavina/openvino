@@ -27,19 +27,13 @@ LLMs and other models that require
 extensive memory to store the weights during inference can benefit
 from weight compression as it:
 
-* enables inference of exceptionally large models
-that cannot be accommodated in the device memory;
+* enables inference of exceptionally large models that cannot be accommodated in the device memory;
 
-* reduces storage and memory overhead, making models
-more lightweight and less resource intensive for deployment;
+* reduces storage and memory overhead, making models more lightweight and less resource intensive for deployment;
 
-* improves inference speed by reducing
-the latency of memory access when computing the
-operations with weights, for example, Linear layers.
-The weights are smaller and thus faster to load from memory;
+* improves inference speed by reducing the latency of memory access when computing the operations with weights, for example, Linear layers. The weights are smaller and thus faster to load from memory;
 
-* unlike quantization, does not require
-sample data to calibrate the range of activation values.
+* unlike quantization, does not require sample data to calibrate the range of activation values.
 
 Currently, `NNCF <https://github.com/openvinotoolkit/nncf>`__
 provides weight quantization to 8 and 4-bit integer data types as a compression
@@ -48,7 +42,7 @@ method primarily designed to optimize LLMs.
 Compress Model Weights
 ######################
 
-- **8-bit weight quantization** - this method offers a balance between model size reduction
+* **8-bit weight quantization** method offers a balance between model size reduction
 and maintaining accuracy, which usually leads to significant performance improvements for Transformer-based models.
 Models with 8-bit compressed weights are performant on the vast majority of supported CPU and GPU platforms.
 
@@ -67,7 +61,7 @@ weights represented on an OpenVINO IR using NNCF:
 Now, the model is ready for compilation and inference.
 It can be also saved into a compressed format, resulting in a smaller binary file.
 
-- **4-bit weight quantization** - this method stands for an INT4-INT8
+* **4-bit weight quantization** method stands for an INT4-INT8
 mixed-precision weight quantization, where INT4 is considered as the
 primary precision and INT8 is the backup one. It usually results in a
 smaller model size and lower inference latency, although the accuracy
@@ -76,7 +70,7 @@ degradation could be higher, depending on the model.
 The table below summarizes the benefits and trade-offs for each compression type in terms of memory reduction, speed gain, and accuracy loss.
 
 .. list-table::
-   :widths: 20 25 55
+   :widths: 20 25 25 25
    :header-rows: 1
 
    * -
@@ -98,10 +92,7 @@ The table below summarizes the benefits and trade-offs for each compression type
 
 The INT4 method has several parameters that can provide different performance-accuracy trade-offs after optimization:
 
-* ``mode`` - there are two modes to choose from: ``INT4_SYM`` - stands
-for INT4 symmetric weight quantization and results in faster inference
-and smaller model size, and ``INT4_ASYM`` - INT4 asymmetric weight quantization
-with variable zero-point for more accurate results.
+* ``mode`` - there are two modes to choose from: ``INT4_SYM`` - stands for INT4 symmetric weight quantization and results in faster inference and smaller model size, and ``INT4_ASYM`` - INT4 asymmetric weight quantization with variable zero-point for more accurate results.
 
 **Symmetric Compression**
 
@@ -133,7 +124,7 @@ when minimal accuracy loss is crucial, but a faster performance than INT8 is sti
 
   compressed_model = compress_weights(model, mode=CompressWeightsMode.INT4_ASYM)
 
-* ``group_size`` - controls the size of the group of weights that share
+* ``group_size`` controls the size of the group of weights that share
 the same quantization parameters. Shared quantization parameters help to
 speed up the calculation of activation values as they are dequantized and
 quantized between layers. However, they can reduce accuracy.
@@ -144,7 +135,7 @@ the model's footprint and reduces inference speed.
 **Larger Group Size**: Results in faster inference and a smaller model,
 but might compromise accuracy.
 
-* ``ratio`` - controls the ratio between INT4 and INT8 compressed layers
+* ``ratio`` controls the ratio between INT4 and INT8 compressed layers
 in the model. Ratio is a decimal between 0 and 1.
 For example, 0.8 means that 80% of layers will be compressed
 to INT4, while the rest will be compressed to INT8 precision.
@@ -177,16 +168,15 @@ It is required for some compression options, for example, some types
 of compressing layers in the bit-width selection algorithm. Some of the metrics
 require dataset to be provided. The following types are supported:
 
-  * ``nncf.SensitivityMetric.WEIGHT_QUANTIZATION_ERROR`` - data-free metric computed as the inverted 8-bit quantization noise. Weights with highest value of this metric can be accurately quantized channel-wise to 8-bit. The idea is to leave these weights in 8 bit, and quantize the rest of layers to 4-bit group-wise. Since group-wise is more accurate than per-channel, accuracy should not degrade.
+* ``nncf.SensitivityMetric.WEIGHT_QUANTIZATION_ERROR`` - data-free metric computed as the inverted 8-bit quantization noise. Weights with highest value of this metric can be accurately quantized channel-wise to 8-bit. The idea is to leave these weights in 8 bit, and quantize the rest of layers to 4-bit group-wise. Since group-wise is more accurate than per-channel, accuracy should not degrade.
 
-  * ``nncf.SensitivityMetric.HESSIAN_INPUT_ACTIVATION`` - requires dataset. The average Hessian trace of weights with respect to the layer-wise quantization error multiplied by L2 norm of 8-bit quantization noise.
+* ``nncf.SensitivityMetric.HESSIAN_INPUT_ACTIVATION`` - requires dataset. The average Hessian trace of weights with respect to the layer-wise quantization error multiplied by L2 norm of 8-bit quantization noise.
 
-  * ``nncf.SensitivityMetric.MEAN_ACTIVATION_VARIANCE`` - requires dataset. The mean variance of the layers' inputs multiplied by inverted 8-bit quantization noise.
+* ``nncf.SensitivityMetric.MEAN_ACTIVATION_VARIANCE`` - requires dataset. The mean variance of the layers' inputs multiplied by inverted 8-bit quantization noise.
 
-  * ``nncf.SensitivityMetric.MAX_ACTIVATION_VARIANCE`` - requires dataset. The maximum variance of the layers' inputs multiplied by inverted 8-bit quantization noise.
+* ``nncf.SensitivityMetric.MAX_ACTIVATION_VARIANCE`` - requires dataset. The maximum variance of the layers' inputs multiplied by inverted 8-bit quantization noise.
 
-  * ``nncf.SensitivityMetric.MEAN_ACTIVATION_MAGNITUDE`` - requires dataset. The mean magnitude of the layers' inputs multiplied by inverted 8-bit quantization noise.
-
+* ``nncf.SensitivityMetric.MEAN_ACTIVATION_MAGNITUDE`` - requires dataset. The mean magnitude of the layers' inputs multiplied by inverted 8-bit quantization noise.
 
 The example below shows data-free 4-bit weight quantization
 applied on top of OpenVINO IR. Before trying the example, make sure Optimum Intel
@@ -206,47 +196,46 @@ The second example uses the Weight Compression API from Optimum Intel instead of
 
 .. tab-set::
 
-   .. tab-item:: NNCF
-      :sync: openvino
+  .. tab-item:: OpenVINO
+    :sync: openvino
 
-      .. code-block:: python
+    .. code-block:: python
 
-        from nncf import compress_weights, CompressWeightsMode
-        from optimum.intel.openvino import OVModelForCausalLM
-        from transformers import AutoTokenizer, pipeline
+      from nncf import compress_weights, CompressWeightsMode
+      from optimum.intel.openvino import OVModelForCausalLM
+      from transformers import AutoTokenizer, pipeline
 
-        # Load model from Hugging Face
-        model_id = "HuggingFaceH4/zephyr-7b-beta"
-        model = OVModelForCausalLM.from_pretrained(model_id, export=True)
+      # Load model from Hugging Face
+      model_id = "HuggingFaceH4/zephyr-7b-beta"
+      model = OVModelForCausalLM.from_pretrained(model_id, export=True)
 
-        # Compress to INT4 Symmetric
-        model.model = compress_weights(model.model,  mode=CompressWeightsMode.INT4_SYM)
+      # Compress to INT4 Symmetric
+      model.model = compress_weights(model.model,  mode=CompressWeightsMode.INT4_SYM)
 
-        # Inference
-        tokenizer = AutoTokenizer.from_pretrained(model_id)
-        pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
-        phrase = "The weather is"
-        results = pipe(phrase)
-        print(results)
+      # Inference
+      tokenizer = AutoTokenizer.from_pretrained(model_id)
+      pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
+      phrase = "The weather is"
+      results = pipe(phrase)
+      print(results)
 
-   .. tab-item:: Optimum-Intel
-      :sync:
+  .. tab-item:: Optimum-Intel
 
-      .. code-block:: python
+    .. code-block:: python
 
-        from optimum.intel.openvino import OVModelForCausalLM
-        from transformers import AutoTokenizer, pipeline
+      from optimum.intel.openvino import OVModelForCausalLM
+      from transformers import AutoTokenizer, pipeline
 
-        # Load and compress model from Hugging Face
-        model_id = "HuggingFaceH4/zephyr-7b-beta"
-        model = OVModelForCausalLM.from_pretrained(model_id, export=True, load_in_8bit=True)
+      # Load and compress model from Hugging Face
+      model_id = "HuggingFaceH4/zephyr-7b-beta"
+      model = OVModelForCausalLM.from_pretrained(model_id, export=True, load_in_8bit=True)
 
-        # Inference
-        tokenizer = AutoTokenizer.from_pretrained(model_id)
-        pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
-        phrase = "The weather is"
-        results = pipe(phrase)
-        print(results)
+      # Inference
+      tokenizer = AutoTokenizer.from_pretrained(model_id)
+      pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
+      phrase = "The weather is"
+      results = pipe(phrase)
+      print(results)
 
 
 For data-aware weight compression refer to the following `example <https://github.com/openvinotoolkit/nncf/tree/develop/examples/llm_compression/openvino>`__.
@@ -379,12 +368,10 @@ The table below shows examples of Text Generation models with different optimiza
 Additional Resources
 ####################
 
-- `OpenVINO GenAI Repo <https://github.com/openvinotoolkit/openvino.genai>`__: Repository containing example pipelines
-that implement image and text generation tasks.
-It also provides a tool to benchmark LLMs.
-- `LLM Compression Jupyter Notebook  <https://github.com/openvinotoolkit/openvino_notebooks/tree/main/notebooks/254-llm-chatbot>`__
-- `Data-aware weight compression <https://github.com/openvinotoolkit/nncf/tree/develop/examples/llm_compression/openvino>`__
-- :doc:`Post-training Quantization <ptq_introduction>`
-- :doc:`Training-time Optimization <tmo_introduction>`
-- `NNCF GitHub <https://github.com/openvinotoolkit/nncf>`__
+* `OpenVINO GenAI Repo <https://github.com/openvinotoolkit/openvino.genai>`__: Repository containing example pipelines that implement image and text generation tasks. It also provides a tool to benchmark LLMs.
+* `LLM Compression Jupyter Notebook  <https://github.com/openvinotoolkit/openvino_notebooks/tree/main/notebooks/254-llm-chatbot>`__
+* `Data-aware weight compression <https://github.com/openvinotoolkit/nncf/tree/develop/examples/llm_compression/openvino>`__
+* :doc:`Post-training Quantization <ptq_introduction>`
+* :doc:`Training-time Optimization <tmo_introduction>`
+* `NNCF GitHub <https://github.com/openvinotoolkit/nncf>`__
 
