@@ -11,6 +11,8 @@ Large Language Models in OpenVINO
    Hugging Face and Native OpenVINO API <native_vs_hugging_face_api>
    Generative AI Optimization and Deployment <gen_ai_guide>
    Weight Compression <weight_compression>
+   LLM Inference with Hugging Face and Optimum Intel <llm_inference>
+   LLM Inference with Native OpenVINO <llm_inference_native_API>
 
 Large Language Models (LLMs) like GPT are transformative deep learning networks
 capable of a broad range of natural language tasks, from text generation to language translation.

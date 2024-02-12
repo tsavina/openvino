@@ -1,6 +1,6 @@
 .. {#gen_ai_guide}
 
-Optimize and Deploy Generative AI Models
+Loading an LLM to OpenVINO
 ========================================
 
 Running Generative AI Models using Hugging Face Optimum Intel
