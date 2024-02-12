@@ -3,10 +3,6 @@
 Weight Compression
 ==================
 
-
-Enhancing Model Efficiency with Weight Compression
-##################################################################
-
 Weight compression is a technique for enhancing the efficiency of models,
 especially those with large memory requirements. This method reduces the model's
 memory footprint, a crucial factor for Large Language Models (LLMs).
@@ -61,16 +57,12 @@ weights represented on an OpenVINO IR using NNCF:
 Now, the model is ready for compilation and inference.
 It can be also saved into a compressed format, resulting in a smaller binary file.
 
-* **4-bit weight quantization** method stands for an INT4-INT8
-mixed-precision weight quantization, where INT4 is considered as the
-primary precision and INT8 is the backup one. It usually results in a
-smaller model size and lower inference latency, although the accuracy
-degradation could be higher, depending on the model.
+* **4-bit weight quantization** method stands for an INT4-INT8 mixed-precision weight quantization, where INT4 is considered as the primary precision and INT8 is the backup one. It usually results in a smaller model size and lower inference latency, although the accuracy degradation could be higher, depending on the model.
 
 The table below summarizes the benefits and trade-offs for each compression type in terms of memory reduction, speed gain, and accuracy loss.
 
 .. list-table::
-   :widths: 20 25 25 25
+   :widths: 25 20 20 20
    :header-rows: 1
 
    * -
@@ -92,16 +84,14 @@ The table below summarizes the benefits and trade-offs for each compression type
 
 The INT4 method has several parameters that can provide different performance-accuracy trade-offs after optimization:
 
-* ``mode`` - there are two modes to choose from: ``INT4_SYM`` - stands for INT4 symmetric weight quantization and results in faster inference and smaller model size, and ``INT4_ASYM`` - INT4 asymmetric weight quantization with variable zero-point for more accurate results.
+* ``mode`` - there are two optimization modes: symmetric and asymmetric.
 
-**Symmetric Compression**
+**Symmetric Compression** - ``INT4_SYM``
 
 INT4 Symmetric mode involves quantizing weights to an unsigned
 4-bit integer symmetrically with a fixed zero point of 8. This
 mode is faster than the INT8, making it ideal for situations
-where speed is prioritized over accuracy. Although it may lead
-to some degradation in accuracy, it is well-suited for models
-where this trade-off is acceptable for a noticeable gain in speed and size reduction.
+where **speed and size reduction are prioritized over accuracy**.
 
 .. code-block:: python
 
@@ -110,12 +100,12 @@ where this trade-off is acceptable for a noticeable gain in speed and size reduc
 
   compressed_model = compress_weights(model, mode=CompressWeightsMode.INT4_SYM)
 
-**Asymmetric Compression**
+**Asymmetric Compression** - ``INT4_ASYM``
 
 INT4 Asymmetric mode also uses an unsigned 4-bit integer but quantizes weights
 asymmetrically with a non-fixed zero point. This mode slightly compromises speed
 in favor of better accuracy compared to the symmetric mode. This mode is useful
-when minimal accuracy loss is crucial, but a faster performance than INT8 is still desired.
+when **minimal accuracy loss is crucial**, but a faster performance than INT8 is still desired.
 
 .. code-block:: python
 
@@ -124,25 +114,19 @@ when minimal accuracy loss is crucial, but a faster performance than INT8 is sti
 
   compressed_model = compress_weights(model, mode=CompressWeightsMode.INT4_ASYM)
 
-* ``group_size`` controls the size of the group of weights that share
-the same quantization parameters. Shared quantization parameters help to
-speed up the calculation of activation values as they are dequantized and
-quantized between layers. However, they can reduce accuracy.
-The following group sizes are recommended: ``128``, ``64``, ``32`` (``128`` is default value).
+* ``group_size`` controls the size of the group of weights that share the same quantization parameters. Shared quantization parameters help to speed up the calculation of activation values as they are dequantized and quantized between layers. However, they can reduce accuracy. The following group sizes are recommended: ``128``, ``64``, ``32`` (``128`` is default value).
 
 **Smaller Group Size**: Leads to a more accurate model but increases
 the model's footprint and reduces inference speed.
+
 **Larger Group Size**: Results in faster inference and a smaller model,
 but might compromise accuracy.
 
-* ``ratio`` controls the ratio between INT4 and INT8 compressed layers
-in the model. Ratio is a decimal between 0 and 1.
-For example, 0.8 means that 80% of layers will be compressed
-to INT4, while the rest will be compressed to INT8 precision.
-The default value for ratio is 1.
+* ``ratio`` controls the ratio between INT4 and INT8 compressed layers in the model. Ratio is a decimal between 0 and 1. For example, 0.8 means that 80% of layers will be compressed to INT4, while the rest will be compressed to INT8 precision. The default value for ratio is 1.
 
-**Higher Ratio (more INT4)**: Tends to reduce the model size and increase
+**Higher Ratio (more INT4)**: Reduces the model size and increase
 inference speed but might lead to higher accuracy degradation.
+
 **Lower Ratio (more INT8)**: Maintains better accuracy but results in
 a larger model size and potentially slower inference.
 
@@ -160,24 +144,6 @@ In this example, 90% of the model's layers are quantized to INT4 asymmetrically 
     ratio=0.9,
   )
 
-* ``dataset`` - calibration dataset for data-aware weight compression.
-It is required for some compression options, for example, some types
-``sensitivity_metric`` can use data for precision selection.
-
-* ``sensitivity_metric`` - controls the metric to estimate the sensitivity
-of compressing layers in the bit-width selection algorithm. Some of the metrics
-require dataset to be provided. The following types are supported:
-
-* ``nncf.SensitivityMetric.WEIGHT_QUANTIZATION_ERROR`` - data-free metric computed as the inverted 8-bit quantization noise. Weights with highest value of this metric can be accurately quantized channel-wise to 8-bit. The idea is to leave these weights in 8 bit, and quantize the rest of layers to 4-bit group-wise. Since group-wise is more accurate than per-channel, accuracy should not degrade.
-
-* ``nncf.SensitivityMetric.HESSIAN_INPUT_ACTIVATION`` - requires dataset. The average Hessian trace of weights with respect to the layer-wise quantization error multiplied by L2 norm of 8-bit quantization noise.
-
-* ``nncf.SensitivityMetric.MEAN_ACTIVATION_VARIANCE`` - requires dataset. The mean variance of the layers' inputs multiplied by inverted 8-bit quantization noise.
-
-* ``nncf.SensitivityMetric.MAX_ACTIVATION_VARIANCE`` - requires dataset. The maximum variance of the layers' inputs multiplied by inverted 8-bit quantization noise.
-
-* ``nncf.SensitivityMetric.MEAN_ACTIVATION_MAGNITUDE`` - requires dataset. The mean magnitude of the layers' inputs multiplied by inverted 8-bit quantization noise.
-
 The example below shows data-free 4-bit weight quantization
 applied on top of OpenVINO IR. Before trying the example, make sure Optimum Intel
 is installed in your environment by running the following command:
@@ -187,10 +153,10 @@ is installed in your environment by running the following command:
   pip install optimum[openvino,nncf]
 
 The first example loads a pre-trained Hugging Face model using the Optimum Intel API,
-compresses it using NNCF, and then executes inference with a text phrase.
+compresses it to INT4 using NNCF, and then executes inference with a text phrase.
 
-If the model comes from Hugging Face and is supported by Optimum, then it can
-be easier to simply use the Optimum Intel API to perform weight compression. The compression
+If the model comes from Hugging Face and is supported by Optimum, it can
+be easier to use the Optimum Intel API to perform weight compression. The compression
 type is specified when the model is loaded using the ``load_in_8bit=True`` or ``load_in_4bit=True`` parameter.
 The second example uses the Weight Compression API from Optimum Intel instead of NNCF to compress the model to INT8
 
@@ -237,8 +203,22 @@ The second example uses the Weight Compression API from Optimum Intel instead of
       results = pipe(phrase)
       print(results)
 
+* ``dataset`` - calibration dataset for data-aware weight compression. It is required for some compression options, for example, some types ``sensitivity_metric`` can use data for precision selection.
+
+* ``sensitivity_metric`` - controls the metric to estimate the sensitivity of compressing layers in the bit-width selection algorithm. Some of the metrics require a dataset. The following types are supported:
+
+  * ``nncf.SensitivityMetric.WEIGHT_QUANTIZATION_ERROR`` - data-free metric computed as the inverted 8-bit quantization noise. Weights with highest value of this metric can be accurately quantized channel-wise to 8-bit. These weights are kept in 8 bit, and the rest of layers are quantized to 4-bit group-wise. Since group-wise is more accurate than per-channel, accuracy should not degrade.
+
+  * ``nncf.SensitivityMetric.HESSIAN_INPUT_ACTIVATION`` - requires dataset. The average Hessian trace of weights with respect to the layer-wise quantization error multiplied by L2 norm of 8-bit quantization noise.
+
+  * ``nncf.SensitivityMetric.MEAN_ACTIVATION_VARIANCE`` - requires dataset. The mean variance of the layers' inputs multiplied by inverted 8-bit quantization noise.
+
+  * ``nncf.SensitivityMetric.MAX_ACTIVATION_VARIANCE`` - requires dataset. The maximum variance of the layers' inputs multiplied by inverted 8-bit quantization noise.
+
+  * ``nncf.SensitivityMetric.MEAN_ACTIVATION_MAGNITUDE`` - requires dataset. The mean magnitude of the layers' inputs multiplied by inverted 8-bit quantization noise.
 
 For data-aware weight compression refer to the following `example <https://github.com/openvinotoolkit/nncf/tree/develop/examples/llm_compression/openvino>`__.
+
 
 **Exporting and Loading Compressed Models**
 
@@ -267,8 +247,8 @@ with `GPTQ <https://github.com/PanQiWei/AutoGPTQ>`__. In this case, there is no
 need for an additional model optimization step because model conversion will
 automatically preserve the INT4 optimization results, allowing model inference to benefit from it.
 
-An end-to-end compression example using a GPTQ model is shown below.
-To successfully run the example, make sure to installed GPTQ dependencies by running the following command:
+A compression example using a GPTQ model is shown below.
+Make sure to install GPTQ dependencies by running the following command:
 
 .. code-block:: python
 
@@ -292,8 +272,8 @@ To successfully run the example, make sure to installed GPTQ dependencies by run
 
 An `example of a model <https://huggingface.co/TheBloke/Llama-2-7B-Chat-GPTQ>`__ that has been optimized using GPTQ.
 
-
-The table below shows examples of Text Generation models with different optimization settings:
+The table shows Text Generation model’s memory size and perplexity when it has been compressed to  FP32, INT8, INT4, or NF4 data types.
+Perplexity is a measurement of response accuracy, where a higher complexity score indicates a lower accuracy.
 
 .. list-table::
    :widths: 40 55 25 25

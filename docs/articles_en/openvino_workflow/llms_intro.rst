@@ -1,7 +1,16 @@
 .. {#llms_intro}
 
+
 Large Language Models in OpenVINO
 ========================================
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   Hugging Face and Native OpenVINO API <native_vs_hugging_face_api>
+   Generative AI Optimization and Deployment <gen_ai_guide>
+   Weight Compression <weight_compression>
 
 Large Language Models (LLMs) like GPT are transformative deep learning networks
 capable of a broad range of natural language tasks, from text generation to language translation.
@@ -24,6 +33,40 @@ enabling the development of multimodal applications, allowing for **write-once, 
 ●	**Compatible with diverse hardware**, including CPUs, GPUs, and neural accelerators
 across ARM and x86/x64 architectures; features automated optimization to maximize
 performance on target hardware.
+
+The following articles provide more code snippets and information on how to use LLMs in OpenVINO.
+
+:doc:`Hugging Face vs Native OpenVINO <native_vs_hugging_face_api>`
+
+This comparison outlines the key differences between integrating LLMs with OpenVINO through
+Hugging Face frameworks and directly using native OpenVINO APIs. The choice between these
+approaches depends on the desired balance between ease of use and customizability for LLM deployment.
+
+:doc:`LLM Weight Compression <weight_compression>`
+
+Weight compression in LLMs, essential for performance enhancement, is facilitated by Intel's
+Neural Network Compression Framework (NNCF). This section covers the techniques and benefits of
+weight compression, focusing on its importance in resource-constrained environments and overall
+model efficiency.
+
+:doc:`LLM Inference in OpenVINO  <gen_ai_guide>`
+
+The approach to LLM inference in OpenVINO varies significantly between using Hugging Face API
+and native OpenVINO methods. With Hugging Face API, the process is streamlined through a simple
+pipeline command, allowing for straightforward model interaction and generation of outputs.
+In contrast, native OpenVINO requires a more hands-on approach, where developers must create
+their own inference loop. This involves detailed steps like token generation and selection,
+offering greater control and customization at the cost of increased complexity.
+Both methods cater to different needs, with Hugging Face providing ease of use and native
+OpenVINO offering extensive customization options for LLM inference.
+
+LLM Model Serving in OpenVINO
+
+Deploying LLMs on a Model Server involves making them accessible over network protocols.
+This includes Unary Model Serving for simple applications and Stream Model Serving for real-time
+data streams. The section outlines best practices for setting up a model server to match specific
+application needs and optimize model accessibility.
+
 
 **Quick Start Example**
 
@@ -57,5 +100,4 @@ Here is  the output from running the example. Try changing the prompt to see wha
 .. code-block:: diff
 
     The weather is finally starting to warm up, and that means it’s time to start thinking about summer activities.
-
 

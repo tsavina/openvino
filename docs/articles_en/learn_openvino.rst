@@ -16,7 +16,6 @@ Learn OpenVINO
 
    Interactive Tutorials (Python) <tutorials>
    Sample Applications (Python & C++) <openvino_docs_OV_UG_Samples_Overview>
-   Generative AI Optimization and Deployment <gen_ai_guide>
    Large Language Models in OpenVINO <llms_intro>
 
 
