@@ -13,10 +13,10 @@ by NNCF and used with other OpenVINO tools.
 Prerequisites
 +++++++++++++++++++++++++++
 
-* Create a Python environment by following the instructions on the :doc:`Install OpenVINO <openvino_docs_install_guides_overview>` page.
+* Create a Python environment by following the instructions on the :doc:`Install OpenVINO PIP <openvino_docs_install_guides_overview>` page.
 * Install the necessary dependencies for Optimum Intel:
 
-.. code-block:: console
+.. code-block:: python
 
     pip install optimum[openvino,nncf]
 

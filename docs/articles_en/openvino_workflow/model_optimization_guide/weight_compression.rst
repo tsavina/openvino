@@ -27,7 +27,8 @@ from weight compression as it:
 
 * reduces storage and memory overhead, making models more lightweight and less resource intensive for deployment;
 
-* improves inference speed by reducing the latency of memory access when computing the operations with weights, for example, Linear layers. The weights are smaller and thus faster to load from memory;
+* improves inference speed by reducing the latency of memory access when computing the operations
+with weights, for example, Linear layers. The weights are smaller and thus faster to load from memory;
 
 * unlike quantization, does not require sample data to calibrate the range of activation values.
 
@@ -38,28 +39,31 @@ method primarily designed to optimize LLMs.
 Compress Model Weights
 ######################
 
-* **8-bit weight quantization** method offers a balance between model size reduction
-and maintaining accuracy, which usually leads to significant performance improvements for Transformer-based models.
-Models with 8-bit compressed weights are performant on the vast majority of supported CPU and GPU platforms.
+**8-bit weight quantization** method offers a balance between model size reduction and
+maintaining accuracy, which usually leads to significant performance improvements for
+Transformer-based models. Models with 8-bit compressed weights are performant on the
+vast majority of supported CPU and GPU platforms.
 
 The code snippet below shows how to do INT8 weight compression of the model
-weights represented on an OpenVINO IR using NNCF:
+weights on an OpenVINO IR using NNCF:
 
-.. tab-set::
+.. code-block:: python
 
-   .. tab-item:: OpenVINO
-      :sync: openvino
+  from nncf import compress_weights
 
-      .. doxygensnippet:: docs/optimization_guide/nncf/code/weight_compression_openvino.py
-         :language: python
-         :fragment: [compression_8bit]
+  ...
+  model = compress_weights(model) # model is openvino.Model object
 
 Now, the model is ready for compilation and inference.
 It can be also saved into a compressed format, resulting in a smaller binary file.
 
-* **4-bit weight quantization** method stands for an INT4-INT8 mixed-precision weight quantization, where INT4 is considered as the primary precision and INT8 is the backup one. It usually results in a smaller model size and lower inference latency, although the accuracy degradation could be higher, depending on the model.
+**4-bit weight quantization** method stands for an INT4-INT8 mixed-precision weight quantization,
+where INT4 is considered as the primary precision and INT8 is the backup one.
+It usually results in a smaller model size and lower inference latency, although the accuracy
+degradation could be higher, depending on the model.
 
-The table below summarizes the benefits and trade-offs for each compression type in terms of memory reduction, speed gain, and accuracy loss.
+The table below summarizes the benefits and trade-offs for each compression type in terms of
+memory reduction, speed gain, and accuracy loss.
 
 .. list-table::
    :widths: 25 20 20 20
@@ -82,30 +86,31 @@ The table below summarizes the benefits and trade-offs for each compression type
      - Medium
      - Medium
 
-The INT4 method has several parameters that can provide different performance-accuracy trade-offs after optimization:
+The INT4 method has several parameters that can provide different performance-accuracy
+trade-offs after optimization:
 
 * ``mode`` - there are two optimization modes: symmetric and asymmetric.
 
-**Symmetric Compression** - ``INT4_SYM``
+  **Symmetric Compression** - ``INT4_SYM``
 
-INT4 Symmetric mode involves quantizing weights to an unsigned
-4-bit integer symmetrically with a fixed zero point of 8. This
-mode is faster than the INT8, making it ideal for situations
-where **speed and size reduction are prioritized over accuracy**.
+  INT4 Symmetric mode involves quantizing weights to an unsigned
+  4-bit integer symmetrically with a fixed zero point of 8. This
+  mode is faster than the INT8, making it ideal for situations
+  where **speed and size reduction are prioritized over accuracy**.
 
-.. code-block:: python
+  .. code-block:: python
 
-  from nncf import compress_weights
-  from nncf import CompressWeightsMode
+    from nncf import compress_weights
+    from nncf import CompressWeightsMode
 
-  compressed_model = compress_weights(model, mode=CompressWeightsMode.INT4_SYM)
+    compressed_model = compress_weights(model, mode=CompressWeightsMode.INT4_SYM)
 
-**Asymmetric Compression** - ``INT4_ASYM``
+  **Asymmetric Compression** - ``INT4_ASYM``
 
-INT4 Asymmetric mode also uses an unsigned 4-bit integer but quantizes weights
-asymmetrically with a non-fixed zero point. This mode slightly compromises speed
-in favor of better accuracy compared to the symmetric mode. This mode is useful
-when **minimal accuracy loss is crucial**, but a faster performance than INT8 is still desired.
+  INT4 Asymmetric mode also uses an unsigned 4-bit integer but quantizes weights
+  asymmetrically with a non-fixed zero point. This mode slightly compromises speed
+  in favor of better accuracy compared to the symmetric mode. This mode is useful
+  when **minimal accuracy loss is crucial**, but a faster performance than INT8 is still desired.
 
 .. code-block:: python
 
@@ -116,19 +121,19 @@ when **minimal accuracy loss is crucial**, but a faster performance than INT8 is
 
 * ``group_size`` controls the size of the group of weights that share the same quantization parameters. Shared quantization parameters help to speed up the calculation of activation values as they are dequantized and quantized between layers. However, they can reduce accuracy. The following group sizes are recommended: ``128``, ``64``, ``32`` (``128`` is default value).
 
-**Smaller Group Size**: Leads to a more accurate model but increases
-the model's footprint and reduces inference speed.
+  **Smaller Group Size**: Leads to a more accurate model but increases
+  the model's footprint and reduces inference speed.
 
-**Larger Group Size**: Results in faster inference and a smaller model,
-but might compromise accuracy.
+  **Larger Group Size**: Results in faster inference and a smaller model,
+  but might compromise accuracy.
 
 * ``ratio`` controls the ratio between INT4 and INT8 compressed layers in the model. Ratio is a decimal between 0 and 1. For example, 0.8 means that 80% of layers will be compressed to INT4, while the rest will be compressed to INT8 precision. The default value for ratio is 1.
 
-**Higher Ratio (more INT4)**: Reduces the model size and increase
-inference speed but might lead to higher accuracy degradation.
+  **Higher Ratio (more INT4)**: Reduces the model size and increase
+  inference speed but might lead to higher accuracy degradation.
 
-**Lower Ratio (more INT8)**: Maintains better accuracy but results in
-a larger model size and potentially slower inference.
+  **Lower Ratio (more INT8)**: Maintains better accuracy but results in
+  a larger model size and potentially slower inference.
 
 In this example, 90% of the model's layers are quantized to INT4 asymmetrically with a group size of 64:
 
@@ -158,7 +163,8 @@ compresses it to INT4 using NNCF, and then executes inference with a text phrase
 If the model comes from Hugging Face and is supported by Optimum, it can
 be easier to use the Optimum Intel API to perform weight compression. The compression
 type is specified when the model is loaded using the ``load_in_8bit=True`` or ``load_in_4bit=True`` parameter.
-The second example uses the Weight Compression API from Optimum Intel instead of NNCF to compress the model to INT8
+The second example uses the Weight Compression API from Optimum Intel instead of NNCF
+to compress the model to INT8.
 
 .. tab-set::
 
@@ -219,7 +225,6 @@ The second example uses the Weight Compression API from Optimum Intel instead of
 
 For data-aware weight compression refer to the following `example <https://github.com/openvinotoolkit/nncf/tree/develop/examples/llm_compression/openvino>`__.
 
-
 **Exporting and Loading Compressed Models**
 
 Once a model has been compressed with NNCF or Optimum Intel,
@@ -237,7 +242,6 @@ load the compressed model later for faster time to first inference.
   # Load a saved model
   model = OVModelForCausalLM.from_pretrained("zephyr-7b-beta-int4-sym-ov")
   tokenizer = AutoTokenizer.from_pretrained("zephyr-7b-beta-int4-sym-ov")
-
 
 **GPTQ Models**
 

@@ -40,16 +40,15 @@ The following articles provide more code snippets and information on how to use 
 
 :doc:`Hugging Face vs Native OpenVINO <native_vs_hugging_face_api>`
 
-This comparison outlines the key differences between integrating LLMs with OpenVINO through
-Hugging Face frameworks and directly using native OpenVINO APIs. The choice between these
-approaches depends on the desired balance between ease of use and customizability for LLM deployment.
+This comparison shows the key differences between integrating LLMs with OpenVINO through
+Hugging Face frameworks and directly using native OpenVINO APIs. The choice depends on the
+desired balance between ease of use and customizability for LLM deployment.
 
 :doc:`LLM Weight Compression <weight_compression>`
 
-Weight compression in LLMs, essential for performance enhancement, is facilitated by Intel's
+Weight compression in LLMs, essential for performance enhancement, is facilitated by
 Neural Network Compression Framework (NNCF). This section covers the techniques and benefits of
-weight compression, focusing on its importance in resource-constrained environments and overall
-model efficiency.
+weight compression.
 
 :doc:`LLM Inference in OpenVINO  <gen_ai_guide>`
 
@@ -59,6 +58,7 @@ pipeline command, allowing for straightforward model interaction and generation 
 In contrast, native OpenVINO requires a more hands-on approach, where developers must create
 their own inference loop. This involves detailed steps like token generation and selection,
 offering greater control and customization at the cost of increased complexity.
+
 Both methods cater to different needs, with Hugging Face providing ease of use and native
 OpenVINO offering extensive customization options for LLM inference.
 
@@ -72,15 +72,19 @@ application needs and optimize model accessibility.
 
 **Quick Start Example**
 
-Here is a quick example of how to run a Llama2 model using OpenVINO optimizations for CPU. First, set up a Python virtual environment for OpenVINO by following the OpenVINO Installation Instructions.
+Here is a quick example of how to run a Llama2 model using OpenVINO optimizations for CPU.
+First, set up a Python virtual environment for OpenVINO by following
+the :doc:`Install OpenVINO PIP <openvino_docs_install_guides_overview>` Instructions.
 
-Once the environment is created and activated, install Optimum Intel, OpenVINO, NNCF and their dependencies in a Python environment by issuing:
+Once the environment is created and activated, install Optimum Intel, OpenVINO,
+NNCF and their dependencies in a Python environment by issuing:
 
 .. code-block:: python
 
     pip install optimum[openvino,nncf]
 
-Run the code shown below to download an LLM from Hugging Face, convert it to OpenVINO IR format, and run text generation on an input prompt.
+Run the code shown below to download an LLM from Hugging Face, convert it to OpenVINO IR format,
+and run text generation on an input prompt.
 
 .. code-block:: python
 

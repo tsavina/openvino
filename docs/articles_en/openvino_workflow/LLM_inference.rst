@@ -16,13 +16,11 @@ Inference with Hugging Face
 
 **Installation**
 
-1. Create a virtual environment
+1. Create a virtual environment. ``openvino_llm`` is an example name; you can choose any name for your environment.
 
 .. code-block:: python
 
   python -m venv openvino_llm
-
-``openvino_llm`` is an example name; you can choose any name for your environment.
 
 2. Activate the virtual environment
 
