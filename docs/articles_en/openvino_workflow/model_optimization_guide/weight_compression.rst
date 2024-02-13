@@ -27,8 +27,7 @@ from weight compression as it:
 
 * reduces storage and memory overhead, making models more lightweight and less resource intensive for deployment;
 
-* improves inference speed by reducing the latency of memory access when computing the operations
-with weights, for example, Linear layers. The weights are smaller and thus faster to load from memory;
+* improves inference speed by reducing the latency of memory access when computing the operations with weights, for example, Linear layers. The weights are smaller and thus faster to load from memory;
 
 * unlike quantization, does not require sample data to calibrate the range of activation values.
 
@@ -91,12 +90,11 @@ trade-offs after optimization:
 
 * ``mode`` - there are two optimization modes: symmetric and asymmetric.
 
-  **Symmetric Compression** - ``INT4_SYM``
-
-  INT4 Symmetric mode involves quantizing weights to an unsigned
-  4-bit integer symmetrically with a fixed zero point of 8. This
-  mode is faster than the INT8, making it ideal for situations
-  where **speed and size reduction are prioritized over accuracy**.
+|  **Symmetric Compression** - ``INT4_SYM``
+|  INT4 Symmetric mode involves quantizing weights to an unsigned
+|  4-bit integer symmetrically with a fixed zero point of 8. This
+|  mode is faster than the INT8, making it ideal for situations
+|  where **speed and size reduction are prioritized over accuracy**.
 
   .. code-block:: python
 
@@ -105,35 +103,32 @@ trade-offs after optimization:
 
     compressed_model = compress_weights(model, mode=CompressWeightsMode.INT4_SYM)
 
-  **Asymmetric Compression** - ``INT4_ASYM``
+|  **Asymmetric Compression** - ``INT4_ASYM``
+|  INT4 Asymmetric mode also uses an unsigned 4-bit integer but quantizes weights
+|  asymmetrically with a non-fixed zero point. This mode slightly compromises speed
+|  in favor of better accuracy compared to the symmetric mode. This mode is useful
+|  when **minimal accuracy loss is crucial**, but a faster performance than INT8 is still desired.
 
-  INT4 Asymmetric mode also uses an unsigned 4-bit integer but quantizes weights
-  asymmetrically with a non-fixed zero point. This mode slightly compromises speed
-  in favor of better accuracy compared to the symmetric mode. This mode is useful
-  when **minimal accuracy loss is crucial**, but a faster performance than INT8 is still desired.
+  .. code-block:: python
 
-.. code-block:: python
+    from nncf import compress_weights
+    from nncf import CompressWeightsMode
 
-  from nncf import compress_weights
-  from nncf import CompressWeightsMode
-
-  compressed_model = compress_weights(model, mode=CompressWeightsMode.INT4_ASYM)
+    compressed_model = compress_weights(model, mode=CompressWeightsMode.INT4_ASYM)
 
 * ``group_size`` controls the size of the group of weights that share the same quantization parameters. Shared quantization parameters help to speed up the calculation of activation values as they are dequantized and quantized between layers. However, they can reduce accuracy. The following group sizes are recommended: ``128``, ``64``, ``32`` (``128`` is default value).
 
-  **Smaller Group Size**: Leads to a more accurate model but increases
-  the model's footprint and reduces inference speed.
-
-  **Larger Group Size**: Results in faster inference and a smaller model,
-  but might compromise accuracy.
+|  **Smaller Group Size**: Leads to a more accurate model but increases
+|  the model's footprint and reduces inference speed.
+|  **Larger Group Size**: Results in faster inference and a smaller model,
+|  but might compromise accuracy.
 
 * ``ratio`` controls the ratio between INT4 and INT8 compressed layers in the model. Ratio is a decimal between 0 and 1. For example, 0.8 means that 80% of layers will be compressed to INT4, while the rest will be compressed to INT8 precision. The default value for ratio is 1.
 
-  **Higher Ratio (more INT4)**: Reduces the model size and increase
-  inference speed but might lead to higher accuracy degradation.
-
-  **Lower Ratio (more INT8)**: Maintains better accuracy but results in
-  a larger model size and potentially slower inference.
+|  **Higher Ratio (more INT4)**: Reduces the model size and increase
+|  inference speed but might lead to higher accuracy degradation.
+|  **Lower Ratio (more INT8)**: Maintains better accuracy but results in
+|  a larger model size and potentially slower inference.
 
 In this example, 90% of the model's layers are quantized to INT4 asymmetrically with a group size of 64:
 

@@ -1,17 +1,13 @@
 .. {#gen_ai_guide}
 
-Loading an LLM to OpenVINO
-========================================
-
-Running Generative AI Models using Hugging Face Optimum Intel
-##############################################################
+Loading LLMs to OpenVINO using Hugging Face Optimum Intel
+======================================================================
 
 The steps below show how to load LLMs from Hugging Face using Optimum Intel.
 They also show how to convert models into OpenVINO IR format so they can be optimized
 by NNCF and used with other OpenVINO tools.
 
-Prerequisites
-+++++++++++++++++++++++++++
+**Prerequisites**
 
 * Create a Python environment by following the instructions on the :doc:`Install OpenVINO PIP <openvino_docs_install_guides_overview>` page.
 * Install the necessary dependencies for Optimum Intel:
@@ -21,8 +17,7 @@ Prerequisites
     pip install optimum[openvino,nncf]
 
 Loading a Hugging Face Model to Optimum Intel
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+##############################################################
 
 To start using OpenVINO as a backend for Hugging Face, change the original
 Hugging Face code with an Optimum Intel equivalent in two places:
@@ -37,7 +32,7 @@ Hugging Face code with an Optimum Intel equivalent in two places:
     +model = OVModelForCausalLM.from_pretrained(model_id, export=True)
 
 Instead of using ``AutoModelForCasualLM`` from the Hugging Face transformers library,
-switch to ``OVModelForCasualLM`` from the `optimum.intel` library. This change enables
+switch to ``OVModelForCasualLM`` from the optimum.intel library. This change enables
 you to use OpenVINO's optimization features. You may also use other AutoModel types,
 such as ``OVModelForSeq2SeqLM``, though this guide will focus on CausalLM.
 
@@ -59,7 +54,7 @@ Once the model is saved, you can load it with the following command:
     model = OVModelForCausalLM.from_pretrained("ov_model")
 
 Obtaining OpenVINO Model Object
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
+##############################################################
 
 When you use Intel Optimum for loading, the resulting model is a Hugging
 Face model with additional functionalities provided by Optimum.
@@ -90,7 +85,7 @@ Set the compile attribute to False while loading the model:
     model = OVModelForCausalLM.from_pretrained(model_id, export=True, compile=False)
 
 Converting a Hugging Face Model to OpenVINO IR
-+++++++++++++++++++++++++++++++++++++++++++++++++++++
+##############################################################
 
 The optimum-cli tool allows you to convert models from Hugging Face to
 the OpenVINO IR format:
@@ -173,7 +168,7 @@ Below are some examples of using Optimum-Intel for model conversion and inferenc
 * `Create an LLM-powered Chatbot using OpenVINO <https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/254-llm-chatbot/254-llm-chatbot.ipynb>`__
 
 Working with Models Tuned with LoRA
-++++++++++++++++++++++++++++++++++++
+##############################################################
 
 Low-rank Adaptation (LoRA) is a popular method to tune Generative AI models to a downstream task or custom data.
 However, it requires some extra steps to be done for efficient deployment using the Hugging Face API.
@@ -192,26 +187,6 @@ This is how it can be done for LLMs:
 
 
 Now the model can be converted to OpenVINO using Optimum Intel Python API or CLI interfaces mentioned above.
-
-Running Generative AI Models using Native OpenVINO APIs
-########################################################
-
-To run Generative AI models using native OpenVINO APIs you need to follow regular **Сonvert -> Optimize -> Deploy** path with a few simplifications.
-
-To convert model from Hugging Face you can use Optimum-Intel export feature that allows to export model in OpenVINO format without invoking conversion API and tools directly, as it is shown above. In this case, the conversion process is a bit more simplified. You can still use a regular conversion path if model comes from outside of Hugging Face ecosystem, i.e., in source framework format (PyTorch, etc.)
-
-Model optimization can be performed within Hugging Face or directly using NNCF as described in the :doc:`weight compression guide <weight_compression>`.
-
-Inference code that uses native API cannot benefit from Hugging Face pipelines. You need to write your custom code or take it from the available examples. Below are some examples of popular Generative AI scenarios:
-
-* In case of LLMs for text generation, you need to handle tokenization, inference and token selection loop, and de-tokenization. If token selection involves beam search, it also needs to be written.
-* For image generation models, you need to make a pipeline that includes several model inferences: inference for source (e.g., text) encoder models, inference loop for diffusion process and inference for decoding part. Scheduler code is also required.
-
-To write such pipelines, you can follow the examples provided as part of OpenVINO:
-
-* `llama2.openvino <https://github.com/OpenVINO-dev-contest/llama2.openvino>`__
-* `LLM optimization by custom operation embedding for OpenVINO <https://github.com/luo-cheng2021/ov.cpu.llm.experimental>`__
-* `C++ Implementation of Stable Diffusion <https://github.com/yangsu2022/OV_SD_CPP>`__
 
 
 Additional Resources

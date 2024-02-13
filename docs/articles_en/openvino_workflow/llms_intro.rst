@@ -9,7 +9,7 @@ Large Language Models in OpenVINO
    :hidden:
 
    Hugging Face and Native OpenVINO API <native_vs_hugging_face_api>
-   Generative AI Optimization and Deployment <gen_ai_guide>
+   Loading LLMs to OpenVINO <gen_ai_guide>
    Weight Compression <weight_compression>
    LLM Inference with Hugging Face and Optimum Intel <llm_inference>
    LLM Inference with Native OpenVINO <llm_inference_native_API>
