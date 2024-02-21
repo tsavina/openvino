@@ -8,7 +8,8 @@ Running Generative AI Models using Native OpenVINO APIs
 
 To run Generative AI models using native OpenVINO APIs you need to follow regular **Сonvert -> Optimize -> Deploy** path with a few simplifications.
 
-To convert model from Hugging Face you can use Optimum-Intel export feature that allows to export model in OpenVINO format without invoking conversion API and tools directly, as it is shown above. In this case, the conversion process is a bit more simplified. You can still use a regular conversion path if model comes from outside of Hugging Face ecosystem, i.e., in source framework format (PyTorch, etc.)
+To convert model from Hugging Face you can use Optimum-Intel export feature that allows to export model in OpenVINO format without invoking conversion API and tools directly, as it is shown above.
+In this case, the conversion process is a bit more simplified. You can still use a regular conversion path if model comes from outside of Hugging Face ecosystem, i.e., in source framework format (PyTorch, etc.)
 
 Model optimization can be performed within Hugging Face or directly using NNCF as described in the :doc:`weight compression guide <weight_compression>`.
 
@@ -22,9 +23,6 @@ To write such pipelines, you can follow the examples provided as part of OpenVIN
 * `llama2.openvino <https://github.com/OpenVINO-dev-contest/llama2.openvino>`__
 * `LLM optimization by custom operation embedding for OpenVINO <https://github.com/luo-cheng2021/ov.cpu.llm.experimental>`__
 * `C++ Implementation of Stable Diffusion <https://github.com/yangsu2022/OV_SD_CPP>`__
-
-Inference can also be run on LLMs using the native OpenVINO API. To perform inference, models
-must be first converted to OpenVINO IR.
 
 An inference pipeline for a text generation LLM is set up in the following stages:
 

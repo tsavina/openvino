@@ -1,7 +1,7 @@
 .. {#llm_inference}
 
-LLM Inference in OpenVINO
-========================================
+LLM Inference with Hugging Face and Optimum Intel
+=====================================================
 
 OpenVINO provides optimized inference for Large Language Models (LLMs). This page explains how
 to perform LLM inference using either the Hugging Face Optimum Intel API or the native OpenVINO API.
