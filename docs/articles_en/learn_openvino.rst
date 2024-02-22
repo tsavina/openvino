@@ -19,7 +19,8 @@ Learn OpenVINO
    Hugging Face vs Native OpenVINO API <native_vs_hugging_face_api>
    Loading LLMs to OpenVINO <gen_ai_guide>
    LLM Inference with Hugging Face and Optimum Intel <llm_inference>
-   LLM Inference with Native OpenVINO <llm_inference_native_API>
+   LLM Inference with Native OpenVINO API <llm_inference_native_API>
+   LLM Inference with Native OpenVINO API <llm_inference_native_API_1>
 
 
 This section will help you get a hands-on experience with OpenVINO even if you are just starting

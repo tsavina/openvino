@@ -1,6 +1,6 @@
 .. {#gen_ai_guide}
 
-Loading LLMs to OpenVINO using Hugging Face Optimum Intel
+Loading and Optimizing LLMs with Optimum Intel
 ======================================================================
 
 The steps below show how to load LLMs from Hugging Face using Optimum Intel.
@@ -94,11 +94,9 @@ the OpenVINO IR format:
 
     optimum-cli export openvino --model <MODEL_NAME> <NEW_MODEL_NAME>
 
-*	--model <MODEL_NAME>: specifies the name of the model you want to convert.
-Replace <MODEL_NAME> with the actual model name from Hugging Face.
+*	--model <MODEL_NAME>: specifies the name of the model you want to convert. Replace <MODEL_NAME> with the actual model name from Hugging Face.
 
-*	<NEW_MODEL_NAME>: specify the name you want to give to the new model in the OpenVINO IR format.
-Replace <NEW_MODEL_NAME> with your desired name.
+*	<NEW_MODEL_NAME>: specify the name you want to give to the new model in the OpenVINO IR format. Replace <NEW_MODEL_NAME> with your desired name.
 
 If you want to convert the `Llama 2` model from Hugging Face to an OpenVINO IR
 model and name it `ov_llama_2`, the command would look like this:
