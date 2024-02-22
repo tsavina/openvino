@@ -165,6 +165,20 @@ Below are some examples of using Optimum-Intel for model conversion and inferenc
 * `Instruction following using Databricks Dolly 2.0 and OpenVINO <https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/240-dolly-2-instruction-following/240-dolly-2-instruction-following.ipynb>`__
 * `Create an LLM-powered Chatbot using OpenVINO <https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/254-llm-chatbot/254-llm-chatbot.ipynb>`__
 
+Stateful Model Optimization
++++++++++++++++++++++++++++
+
+When you use the ``OVModelForCausalLM`` class, the model is transformed into a stateful form by default for optimization.
+This transformation improves inference performance and decreases runtime memory usage in long running text generation tasks.
+It is achieved by hiding the model's inputs and outputs that represent past KV-cache tensors, and handling them inside the model in a more efficient way.
+This feature is activated automatically for many supported text generation models, while unsupported models remain in a regular, stateless form.
+
+Model usage remains the same for stateful and stateless models with the Optimum-Intel API, as KV-cache is handled internally by text-generation API of Transformers library.
+The model's form matters when an OpenVINO IR model is exported from Optimum-Intel and used in an application with the native OpenVINO API.
+This is because stateful and stateless models have a different number of inputs and outputs.
+Learn more about the `native OpenVINO API <Running-Generative-AI-Models-using-Native-OpenVINO-APIs>`__.
+
+
 Working with Models Tuned with LoRA
 ##############################################################
 
@@ -188,9 +202,12 @@ Now the model can be converted to OpenVINO using Optimum Intel Python API or CLI
 
 
 Additional Resources
-############################
+#####################
 
-* `Optimum Intel documentation <https://huggingface.co/docs/optimum/intel/inference>`_
+* `Optimum Intel documentation <https://huggingface.co/docs/optimum/intel/inference>`__
 * :doc:`LLM Weight Compression <weight_compression>`
-* `Neural Network Compression Framework <https://github.com/openvinotoolkit/nncf>`_
-
+* `Neural Network Compression Framework <https://github.com/openvinotoolkit/nncf>`__
+* `GenAI Pipeline Repository <https://github.com/openvinotoolkit/openvino.genai>`__
+* `OpenVINO Tokenizers <https://github.com/openvinotoolkit/openvino_contrib/tree/master/modules/custom_operations/user_ie_extensions/tokenizer/python>`__
+* :doc:`Stateful Models Low-Level Details <openvino_docs_OV_UG_stateful_models_intro>`
+* :doc:`Working with Textual Data <openvino_docs_OV_UG_string_tensors>`
