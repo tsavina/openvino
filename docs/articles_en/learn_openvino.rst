@@ -17,10 +17,10 @@ Learn OpenVINO
    Interactive Tutorials (Python) <tutorials>
    Sample Applications (Python & C++) <openvino_docs_OV_UG_Samples_Overview>
    Hugging Face vs Native OpenVINO API <native_vs_hugging_face_api>
-   Loading LLMs to OpenVINO <gen_ai_guide>
-   LLM Inference with Hugging Face and Optimum Intel <llm_inference>
+   Loading and Optimizing LLMs with Optimum Intel <gen_ai_guide>
+   LLM Inference with Hugging Face Optimum Intel <llm_inference>
    LLM Inference with Native OpenVINO API <llm_inference_native_API>
-   LLM Inference with Native OpenVINO API <llm_inference_native_API_1>
+   LLM Inference: Native OpenVINO API <llm_inference_native_API_new>
 
 
 This section will help you get a hands-on experience with OpenVINO even if you are just starting

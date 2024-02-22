@@ -1,4 +1,4 @@
-.. {#llm_inference_native_API_1}
+.. {#llm_inference_native_API_new}
 
 Inference with Native OpenVINO
 ===============================
