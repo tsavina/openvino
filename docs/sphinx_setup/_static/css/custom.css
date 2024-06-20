@@ -255,6 +255,13 @@ details.sd-dropdown .sd-summary-title {
     transform: rotate(0deg);
 }
 
+/* Ensure breadcrumb items are aligned */
+ul.bd-breadcrumbs li.breadcrumb-item {
+    display: flex;
+    align-items: center; /* Change from baseline to center */
+}
+
+
 /* Doc version dropdown formatting override */
 /* =================================================== */
 [aria-labelledby="version-selector"]  {
