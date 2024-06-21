@@ -261,6 +261,10 @@ ul.bd-breadcrumbs li.breadcrumb-item {
     align-items: center; /* Change from baseline to center */
 }
 
+li.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    }
 
 /* Doc version dropdown formatting override */
 /* =================================================== */
