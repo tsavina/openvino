@@ -258,13 +258,24 @@ details.sd-dropdown .sd-summary-title {
 /* Ensure breadcrumb items are aligned */
 ul.bd-breadcrumbs li.breadcrumb-item {
     display: flex;
+    flex-wrap: wrap;
     align-items: center; /* Change from baseline to center */
 }
 
-li.breadcrumb-item {
-    display: flex;
-    align-items: center;
-    }
+&.breadcrumb-home .svg-inline--fa {
+    vertical-align: middle;
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Specifically target the ellipsis icon within the breadcrumb */
+  .svg-inline--fa {
+    vertical-align: middle;
+    margin: 0 8px;
+    width: 16px;
+    height: 16px;
+  }
 
 /* Doc version dropdown formatting override */
 /* =================================================== */
