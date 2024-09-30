@@ -6,7 +6,6 @@
  <a href="https://docs.openvino.ai/2024/index.html"><b>Documentation</b></a> • <a href="https://blog.openvino.ai"><b>Blog</b></a> • <a href="https://docs.openvino.ai/2024/about-openvino/key-features.html"><b>Key Features</b></a> • <a href="https://docs.openvino.ai/2024/learn-openvino.html"><b>Tutorials</b></a> • <a href="https://docs.openvino.ai/2024/documentation/openvino-ecosystem.html"><b>Integrations</b></a> • <a href="https://docs.openvino.ai/2024/about-openvino/performance-benchmarks.html"><b>Benchmarks</b></a>
 </p>
 
- <div>
 
 [![PyPI Status](https://badge.fury.io/py/openvino.svg)](https://badge.fury.io/py/openvino)
 [![Anaconda Status](https://anaconda.org/conda-forge/openvino/badges/version.svg)](https://anaconda.org/conda-forge/openvino)
@@ -29,13 +28,6 @@ Welcome to OpenVINO™, an open-source software toolkit for optimizing and deplo
 
 Check out the [OpenVINO Cheat Sheet](https://docs.openvino.ai/2024/_static/download/OpenVINO_Quick_Start_Guide.pdf) for a quick reference. Refer to the [Key Features](https://docs.openvino.ai/2024/about-openvino/key-features.html) section in the documentation for more details.
 
-## Latest Updates 🚀
-
-[2024.1] *Expanded AI Model Support*: Now featuring GLM-4-9B Chat, Llama 3.1, and more for enhanced generative AI capabilities.
-[2024.1] *New AI Notebooks*: Introducing new notebooks like Florence-2 and PixArt-α for advanced AI tasks.
-[2024.1] *Optimized OpenVINO™ Runtime*: Improved LLM performance on Intel® Core™ Ultra Processors (Series 2) with reduced latency and memory usage.
-[2024.1] *Enhanced Inference Throughput*: PagedAttention and memory sharing innovations boost LLM inferencing on Intel® GPUs.
-
 ## Installation
 
 [Get your preferred distribution of OpenVINO](https://docs.openvino.ai/2024/get-started/install-openvino.html) or use this command for quick installation:
@@ -45,6 +37,13 @@ pip install -U openvino
 ```
 
 Check [system requirements](https://docs.openvino.ai/2024/about-openvino/system-requirements.html) and [supported devices](https://docs.openvino.ai/2024/about-openvino/compatibility-and-support/supported-devices.html) for detailed information.
+
+## Latest Updates 🚀
+
+- [2024.1] *Expanded AI Model Support*: Now featuring GLM-4-9B Chat, Llama 3.1, and more for enhanced generative AI capabilities.
+- [2024.1] *New AI Notebooks*: Introducing new notebooks like Florence-2 and PixArt-α for advanced AI tasks.
+- [2024.1] *Optimized OpenVINO™ Runtime*: Improved LLM performance on Intel® Core™ Ultra Processors (Series 2) with reduced latency and memory usage.
+- [2024.1] *Enhanced Inference Throughput*: PagedAttention and memory sharing innovations boost LLM inferencing on Intel® GPUs.
 
 ## Tutorials and Examples
 
