@@ -18,8 +18,9 @@
  </div>
 
 
-
+<h3 align="center">
 Welcome to OpenVINO™, an open-source software toolkit for optimizing and deploying deep learning models.
+</h3>
 
 - **Inference Optimization**: Boost deep learning performance in computer vision, automatic speech recognition, generative AI, natural language processing with large and small language models, and many other common tasks.
 - **Flexible Model Support**: Use models trained with popular frameworks such as TensorFlow, PyTorch, ONNX, Keras, and PaddlePaddle. Convert and deploy models without original frameworks.
@@ -28,16 +29,12 @@ Welcome to OpenVINO™, an open-source software toolkit for optimizing and deplo
 
 Check out the [OpenVINO Cheat Sheet](https://docs.openvino.ai/2024/_static/download/OpenVINO_Quick_Start_Guide.pdf) for a quick reference. Refer to the [Key Features](https://docs.openvino.ai/2024/about-openvino/key-features.html) section in the documentation for more details.
 
-## Latest Update 🚀
+## Latest Updates 🚀
 
-- *Expanded AI Model Support*: Now featuring GLM-4-9B Chat, Llama 3.1, and more for enhanced generative AI capabilities.
-- *New AI Notebooks*: Introducing new notebooks like Florence-2 and PixArt-α for advanced AI tasks.
-- *Optimized OpenVINO™ Runtime*: Improved LLM performance on Intel® Core™ Ultra Processors (Series 2) with reduced latency and memory usage.
-- *Enhanced Inference Throughput*: PagedAttention and memory sharing innovations boost LLM inferencing on Intel® GPUs.
-
-## OpenVINO Performance
-
-Explore [OpenVINO Performance Benchmarks](https://docs.openvino.ai/2024/about-openvino/performance-benchmarks.html) to discover the optimal hardware configurations and plan your AI deployment based on verified data.
+[2024.1] *Expanded AI Model Support*: Now featuring GLM-4-9B Chat, Llama 3.1, and more for enhanced generative AI capabilities.
+[2024.1] *New AI Notebooks*: Introducing new notebooks like Florence-2 and PixArt-α for advanced AI tasks.
+[2024.1] *Optimized OpenVINO™ Runtime*: Improved LLM performance on Intel® Core™ Ultra Processors (Series 2) with reduced latency and memory usage.
+[2024.1] *Enhanced Inference Throughput*: PagedAttention and memory sharing innovations boost LLM inferencing on Intel® GPUs.
 
 ## Installation
 
@@ -58,9 +55,9 @@ Learn how to optimize and deploy popular models with the [OpenVINO Notebooks](ht
 - [YOLOv8 Optimization](https://github.com/openvinotoolkit/openvino_notebooks/blob/latest/notebooks/quantizing-model-with-accuracy-control/yolov8-quantization-with-accuracy-control.ipynb)
 - [Text-to-Image Generation](https://github.com/openvinotoolkit/openvino_notebooks/blob/latest/notebooks/controlnet-stable-diffusion/controlnet-stable-diffusion.ipynb)
 
-[Samples](https://docs.openvino.ai/2024/learn-openvino/openvino-samples.html)
+For C++ examples, check out OpenVINO [Samples](https://docs.openvino.ai/2024/learn-openvino/openvino-samples.html).
 
-Here are easy-to-follow code examples demonstrating how to run PyTorch and TensorFlow model inference using OpenVINO:
+Here are easy-to-follow code examples demonstrating how to run PyTorch inference using OpenVINO:
 
 **PyTorch Model**
 
@@ -89,6 +86,10 @@ output = compiled_model({0: example.numpy()})
 [User documentation](https://docs.openvino.ai/) contains detailed information about OpenVINO and guides you from installation through optimizing and deploying models for your AI applications.
 
 [Developer documentation](./docs/dev/index.md) focuses on the OpenVINO architecture and describes [building](./docs/dev/build.md)  and [contributing](./CONTRIBUTING.md) processes.
+
+## Performance
+
+Explore [OpenVINO Performance Benchmarks](https://docs.openvino.ai/2024/about-openvino/performance-benchmarks.html) to discover the optimal hardware configurations and plan your AI deployment based on verified data.
 
 ## OpenVINO Ecosystem
 
