@@ -1,6 +1,9 @@
 <div align="center">
 <img src="docs/dev/assets/openvino-logo-purple-black.svg" width="400px">
 
+<h3 align="center">
+Open-source software toolkit for optimizing and deploying deep learning models.
+</h3>
 
 <p align="center">
  <a href="https://docs.openvino.ai/2024/index.html"><b>Documentation</b></a> • <a href="https://blog.openvino.ai"><b>Blog</b></a> • <a href="https://docs.openvino.ai/2024/about-openvino/key-features.html"><b>Key Features</b></a> • <a href="https://docs.openvino.ai/2024/learn-openvino.html"><b>Tutorials</b></a> • <a href="https://docs.openvino.ai/2024/documentation/openvino-ecosystem.html"><b>Integrations</b></a> • <a href="https://docs.openvino.ai/2024/about-openvino/performance-benchmarks.html"><b>Benchmarks</b></a>
@@ -16,10 +19,6 @@
 [![brew Downloads](https://img.shields.io/homebrew/installs/dy/openvino)](https://formulae.brew.sh/formula/openvino)
  </div>
 
-
-<h3 align="center">
-Welcome to OpenVINO™, an open-source software toolkit for optimizing and deploying deep learning models.
-</h3>
 
 - **Inference Optimization**: Boost deep learning performance in computer vision, automatic speech recognition, generative AI, natural language processing with large and small language models, and many other common tasks.
 - **Flexible Model Support**: Use models trained with popular frameworks such as TensorFlow, PyTorch, ONNX, Keras, and PaddlePaddle. Convert and deploy models without original frameworks.
