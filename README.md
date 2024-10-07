@@ -42,7 +42,7 @@ Check [system requirements](https://docs.openvino.ai/2024/about-openvino/system-
 - [2024.1] *Expanded AI Model Support*: Now featuring GLM-4-9B Chat, Llama 3.1, and more for enhanced generative AI capabilities.
 - [2024.1] *New AI Notebooks*: Introducing new notebooks like Florence-2 and PixArt-α for advanced AI tasks.
 - [2024.1] *Optimized OpenVINO™ Runtime*: Improved LLM performance on Intel® Core™ Ultra Processors (Series 2) with reduced latency and memory usage.
-- [2024.1] *Enhanced Inference Throughput*: PagedAttention and memory sharing innovations boost LLM inferencing on Intel® GPUs.
+- [2024.1] *Enhanced Inference Throughput*: PagedAttention and memory sharing boost LLM inferencing on Intel® GPUs.
 
 ## Tutorials and Examples
 
@@ -91,8 +91,6 @@ Explore [OpenVINO Performance Benchmarks](https://docs.openvino.ai/2024/about-op
 
 ## OpenVINO Ecosystem
 
-### Integrations
-
 ### OpenVINO Project
 
 -   [🤗Optimum Intel](https://github.com/huggingface/optimum-intel) -  a simple interface to optimize Transformers and Diffusers models.
@@ -100,6 +98,20 @@ Explore [OpenVINO Performance Benchmarks](https://docs.openvino.ai/2024/about-op
 -   [GenAI Repository](https://github.com/openvinotoolkit/openvino.genai) and [OpenVINO Tokenizers](https://github.com/openvinotoolkit/openvino_tokenizers) - resources and tools for developing and optimizing Generative AI applications.
 -   [OpenVINO™ Model Server (OVMS)](https://github.com/openvinotoolkit/model_server) - a scalable, high-performance solution for serving models optimized for Intel architectures.
 -   [Intel® Geti™](https://geti.intel.com/) - an interactive video and image annotation tool for computer vision use cases.
+
+### Integrations
+
+- hugging face
+- torch.compile
+- onnx rt ov ep
+- ultralytics
+- llamaindex
+- langchain
+- vllm
+- triton
+- torchserve
+- qwenagent
+- spark-nlp
 
 Check out the [Awesome OpenVINO](https://github.com/openvinotoolkit/awesome-openvino) repository to discover a collection of community-made AI projects based on OpenVINO!
 
