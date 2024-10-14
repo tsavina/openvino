@@ -10,25 +10,16 @@ Open-source software toolkit for optimizing and deploying deep learning models.
 </p>
 
 | | | |
-|------|----------|----------|
+|:------:|:----------:|:----------:|
 | [![PyPI Status](https://badge.fury.io/py/openvino.svg)](https://badge.fury.io/py/openvino) | [![Anaconda Status](https://anaconda.org/conda-forge/openvino/badges/version.svg)](https://anaconda.org/conda-forge/openvino) | [![brew Status](https://img.shields.io/homebrew/v/openvino)](https://formulae.brew.sh/formula/openvino) |
 | [![PyPI Downloads](https://static.pepy.tech/badge/openvino)](https://pepy.tech/project/openvino) | [![Anaconda Downloads](https://anaconda.org/conda-forge/libopenvino/badges/downloads.svg)](https://anaconda.org/conda-forge/openvino/files) | [![brew Downloads](https://img.shields.io/homebrew/installs/dy/openvino)](https://formulae.brew.sh/formula/openvino) |
 
-# OpenVINO™
-
-## Distribution Methods
-
+|PyPI|Anaconda|brew|
+|:------:|:----------:|:----------:|
 | [![PyPI Status](https://badge.fury.io/py/openvino.svg)](https://badge.fury.io/py/openvino) | [![Anaconda Status](https://anaconda.org/conda-forge/openvino/badges/version.svg)](https://anaconda.org/conda-forge/openvino) | [![brew Status](https://img.shields.io/homebrew/v/openvino)](https://formulae.brew.sh/formula/openvino) |
 | [![PyPI Downloads](https://static.pepy.tech/badge/openvino)](https://pepy.tech/project/openvino) | [![Anaconda Downloads](https://anaconda.org/conda-forge/libopenvino/badges/downloads.svg)](https://anaconda.org/conda-forge/openvino/files) | [![brew Downloads](https://img.shields.io/homebrew/installs/dy/openvino)](https://formulae.brew.sh/formula/openvino) |
 
  </div>
-
-# OpenVINO™
-
-## Distribution Methods
-
-| [![PyPI Status](https://badge.fury.io/py/openvino.svg)](https://badge.fury.io/py/openvino) | [![Anaconda Status](https://anaconda.org/conda-forge/openvino/badges/version.svg)](https://anaconda.org/conda-forge/openvino) | [![brew Status](https://img.shields.io/homebrew/v/openvino)](https://formulae.brew.sh/formula/openvino) |
-| [![PyPI Downloads](https://static.pepy.tech/badge/openvino)](https://pepy.tech/project/openvino) | [![Anaconda Downloads](https://anaconda.org/conda-forge/libopenvino/badges/downloads.svg)](https://anaconda.org/conda-forge/openvino/files) | [![brew Downloads](https://img.shields.io/homebrew/installs/dy/openvino)](https://formulae.brew.sh/formula/openvino) |
 
 ### OpenVINO Project
 
