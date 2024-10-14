@@ -14,6 +14,36 @@ Open-source software toolkit for optimizing and deploying deep learning models.
 |:------:|:----------:|:----------:|
 | [![PyPI Downloads](https://static.pepy.tech/badge/openvino)](https://pepy.tech/project/openvino) | [![Anaconda Downloads](https://anaconda.org/conda-forge/libopenvino/badges/downloads.svg)](https://anaconda.org/conda-forge/openvino/files) | [![brew Downloads](https://img.shields.io/homebrew/installs/dy/openvino)](https://formulae.brew.sh/formula/openvino) |
 
+<div align="center">
+  <div style="display: inline-block; text-align: center; margin: 10px;">
+    <a href="https://badge.fury.io/py/openvino">
+      <img src="https://badge.fury.io/py/openvino.svg" alt="PyPI Version">
+    </a>
+    <br>
+    <a href="https://pepy.tech/project/openvino">
+      <img src="https://static.pepy.tech/badge/openvino" alt="PyPI Downloads">
+    </a>
+  </div>
+  <div style="display: inline-block; text-align: center; margin: 10px;">
+    <a href="https://anaconda.org/conda-forge/openvino">
+      <img src="https://anaconda.org/conda-forge/openvino/badges/version.svg" alt="Anaconda Version">
+    </a>
+    <br>
+    <a href="https://anaconda.org/conda-forge/openvino/files">
+      <img src="https://anaconda.org/conda-forge/libopenvino/badges/downloads.svg" alt="Anaconda Downloads">
+    </a>
+  </div>
+  <div style="display: inline-block; text-align: center; margin: 10px;">
+    <a href="https://formulae.brew.sh/formula/openvino">
+      <img src="https://img.shields.io/homebrew/v/openvino" alt="Homebrew Version">
+    </a>
+    <br>
+    <a href="https://formulae.brew.sh/formula/openvino">
+      <img src="https://img.shields.io/homebrew/installs/dy/openvino" alt="Homebrew Downloads">
+    </a>
+  </div>
+</div>
+
  </div>
 
 ### OpenVINO Project
