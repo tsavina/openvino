@@ -20,6 +20,94 @@ Open-source software toolkit for optimizing and deploying deep learning models.
  </div>
 
 
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Tab1')">Tab 1</button>
+  <button class="tablinks" onclick="openTab(event, 'Tab2')">Tab 2</button>
+  <button class="tablinks" onclick="openTab(event, 'Tab3')">Tab 3</button>
+</div>
+
+<div id="Tab1" class="tabcontent">
+  <h3>Tab 1</h3>
+  <p>1111Content for Tab 1.</p>
+</div>
+
+<div id="Tab2" class="tabcontent">
+  <h3>Tab 2</h3>
+  <p>222Content for Tab 2.</p>
+</div>
+
+<div id="Tab3" class="tabcontent">
+  <h3>Tab 3</h3>
+  <p>333Content for Tab 3.</p>
+</div>
+
+<style>
+  .tab {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+  }
+</style>
+
+<script>
+  function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - **Inference Optimization**: Boost deep learning performance in computer vision, automatic speech recognition, generative AI, natural language processing with large and small language models, and many other common tasks.
 - **Flexible Model Support**: Use models trained with popular frameworks such as TensorFlow, PyTorch, ONNX, Keras, and PaddlePaddle. Convert and deploy models without original frameworks.
 - **Broad Platform Compatibility**: Reduce resource demands and efficiently deploy on a range of platforms from edge to cloud. OpenVINO™ supports inference on CPU (x86, ARM), GPU (OpenCL capable, integrated and discrete) and AI accelerators (Intel NPU).
@@ -177,69 +265,4 @@ output = compiled_model({0: data})
 ``` -->
 
 
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Tab1')">Tab 1</button>
-  <button class="tablinks" onclick="openTab(event, 'Tab2')">Tab 2</button>
-  <button class="tablinks" onclick="openTab(event, 'Tab3')">Tab 3</button>
-</div>
 
-<div id="Tab1" class="tabcontent">
-  <h3>Tab 1</h3>
-  <p>1111Content for Tab 1.</p>
-</div>
-
-<div id="Tab2" class="tabcontent">
-  <h3>Tab 2</h3>
-  <p>222Content for Tab 2.</p>
-</div>
-
-<div id="Tab3" class="tabcontent">
-  <h3>Tab 3</h3>
-  <p>333Content for Tab 3.</p>
-</div>
-
-<style>
-  .tab {
-    overflow: hidden;
-    border-bottom: 1px solid #ccc;
-  }
-
-  .tab button {
-    background-color: inherit;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-  }
-
-  .tab button:hover {
-    background-color: #ddd;
-  }
-
-  .tab button.active {
-    background-color: #ccc;
-  }
-
-  .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border-top: none;
-  }
-</style>
-
-<script>
-  function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-</script>
